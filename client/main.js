@@ -17,7 +17,8 @@ import "/imports/ui/pages/home";
 import "/imports/ui/pages/notFound";
 
 // Stylesheets
-import "/imports/ui/stylesheets/main.css";
+import "/imports/ui/stylesheets/materialize.css";
+//import "/imports/ui/stylesheets/main.css";
 
 // Methods
 import "/imports/api/methods";

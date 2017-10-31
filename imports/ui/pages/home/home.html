@@ -1,46 +1,73 @@
 <template name='home'>
-<div class="main-wrapper ng-scope main-wrapper-index">
-    <main class="content">
-		<div class="serch-wrap">
-    		<section class="serch-form center-div" ng-class="{'stickytop':stickyTop}">
-        		<div class="wrapper">
-            		<search-form lang="en" form-data="searchData" search-url="searchUrl" on-submit="submit()" class="ng-isolate-scope"><div class="twidget-container" id="twidget" style="position:relative"> <div class="twidget-tab-content"> <form ng-submit="$ctrl.submit()" class="ng-pristine ng-valid"> <ul class="twidget-form-list clearfix"> <li class="twidget-origin twidget-city"> <city-autocomplete value="$ctrl.data.origin" data-key="'origin'" label="'avia_input_origin_label'" class="ng-isolate-scope"><div class="twidget-input-box" select-input=""> <label class="ng-binding">Origin</label> <div mass-autocomplete="" class="twidget-autocomplete ng-isolate-scope"><span ng-transclude=""> <input type="text" ng-model="$ctrl.typedValue" placeholder="Origin" ng-change="$ctrl.onChange($ctrl.typedValue)" mass-autocomplete-item="$ctrl.options" class="ng-pristine ng-valid ng-scope ng-isolate-scope ng-not-empty ng-touched" autocomplete="off" style=""> </span><div class="ac-container ng-hide" aria-autocomplete="list" role="listbox" ng-show="show_autocomplete" style="position: absolute; width: 580.125px;"><ul class="ac-menu"> <!-- ngRepeat: result in results --></ul></div></div> <div class="twidget-pseudo-input"> <span class="twidget-pseudo-name ng-binding"> Manila</span> <span class="twidget-pseudo-country-name ng-binding">, Philippines</span> </div> </div> <div class="twidget-origin-iata ng-binding"> MNL</div> </city-autocomplete> </li> <li class="twidget-destination twidget-city"> <city-autocomplete value="$ctrl.data.destination" data-key="'destination'" label="'avia_input_destination_label'" class="ng-isolate-scope"><div class="twidget-input-box" select-input=""> <label class="ng-binding">Destination</label> <div mass-autocomplete="" class="twidget-autocomplete ng-isolate-scope"><span ng-transclude=""> <input type="text" ng-model="$ctrl.typedValue" placeholder="Destination" ng-change="$ctrl.onChange($ctrl.typedValue)" mass-autocomplete-item="$ctrl.options" class="ng-pristine ng-valid ng-scope ng-isolate-scope ng-empty ng-touched" autocomplete="off"> </span><div class="ac-container ng-hide" aria-autocomplete="list" role="listbox" ng-show="show_autocomplete" style="position: absolute; width: 580.125px;"><ul class="ac-menu"> <!-- ngRepeat: result in results --></ul></div></div> <div class="twidget-pseudo-input"> <span class="twidget-pseudo-name ng-binding"> </span> <span class="twidget-pseudo-country-name ng-binding">, </span> </div> </div> <div class="twidget-origin-iata ng-binding"> </div> </city-autocomplete> </li> <li class="twidget-flight-dates input-daterange input-group clearfix"> <search-form-datepicker-input class="twidget-dep-date twidget-form-item ng-isolate-scope" label="'avia_input_date_start'" dates="$ctrl.data" value="$ctrl.data.depart_date" key="'rangeStart'"><div class="twidget-input-box"> <label ng-click="$ctrl.popover.toggle()" class="ng-binding">Depart date</label> <div class="twidget-input-box-show-popup" ng-click="$ctrl.popover.toggle()"> <input type="text"> <div class="twidget-icon-cal" ng-show="$ctrl.key === 'rangeStart'"></div> <div class="twidget-icon-cal ng-hide" ng-hide="$ctrl.value || $ctrl.key === 'rangeStart'"></div> <span class="twidget-date-text twidget-date-depart ng-binding ng-hide" ng-hide="$ctrl.value">Depart date</span> <span ng-show="$ctrl.value" class="twidget-date-text twidget-date-depart ng-binding">26 October, Thu</span> </div> <!-- ngIf: $ctrl.key === 'rangeEnd' --> </div> </search-form-datepicker-input> <search-form-datepicker-input class="twidget-return-date twidget-form-item ng-isolate-scope" label="'avia_input_date_end'" dates="$ctrl.data" value="$ctrl.data.return_date" key="'rangeEnd'"><div class="twidget-input-box"> <label ng-click="$ctrl.popover.toggle()" class="ng-binding">Return date</label> <div class="twidget-input-box-show-popup" ng-click="$ctrl.popover.toggle()"> <input type="text"> <div class="twidget-icon-cal ng-hide" ng-show="$ctrl.key === 'rangeStart'"></div> <div class="twidget-icon-cal" ng-hide="$ctrl.value || $ctrl.key === 'rangeStart'"></div> <span class="twidget-date-text twidget-date-depart ng-binding" ng-hide="$ctrl.value">Return date</span> <span ng-show="$ctrl.value" class="twidget-date-text twidget-date-depart ng-binding ng-hide"></span> </div> <!-- ngIf: $ctrl.key === 'rangeEnd' --><div class="twidget-icon-delete ng-scope ng-hide" ng-if="$ctrl.key === 'rangeEnd'" ng-show="$ctrl.value" ng-click="$ctrl.value=null;"></div><!-- end ngIf: $ctrl.key === 'rangeEnd' --> </div> </search-form-datepicker-input> </li> <li class="twidget-passengers"> <passengers form-data="$ctrl.data" passengers="$ctrl.data.passengers" trip-class="$ctrl.data.trip_class" class="ng-isolate-scope"><div> <label class="ng-binding">Passengers/Class</label> <div class="twidget-passengers-detail" ng-class="{'active':$ctrl.active}"> <div class="twidget-pas-no"><span id="twidget-pas" class="ng-binding">1</span> <span class="twidget-pas-caption ng-binding">passenger</span> </div> <div class="twidget-class ng-binding">economy class </div> </div> </div></passengers> </li> <li class="twidget-submit-button"> <button class="ng-binding">Search</button> </li> </ul> </form> </div> </div></search-form>
+<div>
+    <main>
+		<!--<div class="serch-wrap">
+    		<section class="serch-form center-div" ng-class="{'stickytop':stickyTop}">-->
+        		<!--<div class="wrapper">
+            		<search-form lang="en" form-data="searchData" search-url="searchUrl" on-submit="submit()" class="ng-isolate-scope"><div class="twidget-container" id="twidget" style="position:relative"> <div class="twidget-tab-content"> <form ng-submit="$ctrl.submit()" class="ng-pristine ng-valid"> <ul class="twidget-form-list clearfix"> <li class="twidget-origin twidget-city"> <city-autocomplete value="$ctrl.data.origin" data-key="'origin'" label="'avia_input_origin_label'" class="ng-isolate-scope"><div class="twidget-input-box" select-input=""> <label class="ng-binding">Origin</label> <div mass-autocomplete="" class="twidget-autocomplete ng-isolate-scope"><span ng-transclude=""> <input type="text" ng-model="$ctrl.typedValue" placeholder="Origin" ng-change="$ctrl.onChange($ctrl.typedValue)" mass-autocomplete-item="$ctrl.options" class="ng-pristine ng-valid ng-scope ng-isolate-scope ng-not-empty ng-touched" autocomplete="off" style=""> </span><div class="ac-container ng-hide" aria-autocomplete="list" role="listbox" ng-show="show_autocomplete" style="position: absolute; width: 580.125px;"><ul class="ac-menu">--> <!-- ngRepeat: result in results --><!--</ul></div></div> <div class="twidget-pseudo-input"> <span class="twidget-pseudo-name ng-binding"> Manila</span> <span class="twidget-pseudo-country-name ng-binding">, Philippines</span> </div> </div> <div class="twidget-origin-iata ng-binding"> MNL</div> </city-autocomplete> </li> <li class="twidget-destination twidget-city"> <city-autocomplete value="$ctrl.data.destination" data-key="'destination'" label="'avia_input_destination_label'" class="ng-isolate-scope"><div class="twidget-input-box" select-input=""> <label class="ng-binding">Destination</label> <div mass-autocomplete="" class="twidget-autocomplete ng-isolate-scope"><span ng-transclude=""> <input type="text" ng-model="$ctrl.typedValue" placeholder="Destination" ng-change="$ctrl.onChange($ctrl.typedValue)" mass-autocomplete-item="$ctrl.options" class="ng-pristine ng-valid ng-scope ng-isolate-scope ng-empty ng-touched" autocomplete="off"> </span><div class="ac-container ng-hide" aria-autocomplete="list" role="listbox" ng-show="show_autocomplete" style="position: absolute; width: 580.125px;"><ul class="ac-menu">--> <!-- ngRepeat: result in results --><!--</ul></div></div> <div class="twidget-pseudo-input"> <span class="twidget-pseudo-name ng-binding"> </span> <span class="twidget-pseudo-country-name ng-binding">, </span> </div> </div> <div class="twidget-origin-iata ng-binding"> </div> </city-autocomplete> </li> <li class="twidget-flight-dates input-daterange input-group clearfix"> <search-form-datepicker-input class="twidget-dep-date twidget-form-item ng-isolate-scope" label="'avia_input_date_start'" dates="$ctrl.data" value="$ctrl.data.depart_date" key="'rangeStart'"><div class="twidget-input-box"> <label ng-click="$ctrl.popover.toggle()" class="ng-binding">Depart date</label> <div class="twidget-input-box-show-popup" ng-click="$ctrl.popover.toggle()"> <input type="text"> <div class="twidget-icon-cal" ng-show="$ctrl.key === 'rangeStart'"></div> <div class="twidget-icon-cal ng-hide" ng-hide="$ctrl.value || $ctrl.key === 'rangeStart'"></div> <span class="twidget-date-text twidget-date-depart ng-binding ng-hide" ng-hide="$ctrl.value">Depart date</span> <span ng-show="$ctrl.value" class="twidget-date-text twidget-date-depart ng-binding">26 October, Thu</span> </div>--> <!-- ngIf: $ctrl.key === 'rangeEnd' --> <!--</div> </search-form-datepicker-input> <search-form-datepicker-input class="twidget-return-date twidget-form-item ng-isolate-scope" label="'avia_input_date_end'" dates="$ctrl.data" value="$ctrl.data.return_date" key="'rangeEnd'"><div class="twidget-input-box"> <label ng-click="$ctrl.popover.toggle()" class="ng-binding">Return date</label> <div class="twidget-input-box-show-popup" ng-click="$ctrl.popover.toggle()"> <input type="text"> <div class="twidget-icon-cal ng-hide" ng-show="$ctrl.key === 'rangeStart'"></div> <div class="twidget-icon-cal" ng-hide="$ctrl.value || $ctrl.key === 'rangeStart'"></div> <span class="twidget-date-text twidget-date-depart ng-binding" ng-hide="$ctrl.value">Return date</span> <span ng-show="$ctrl.value" class="twidget-date-text twidget-date-depart ng-binding ng-hide"></span> </div> --><!-- ngIf: $ctrl.key === 'rangeEnd' --><!--<div class="twidget-icon-delete ng-scope ng-hide" ng-if="$ctrl.key === 'rangeEnd'" ng-show="$ctrl.value" ng-click="$ctrl.value=null;"></div>--><!-- end ngIf: $ctrl.key === 'rangeEnd' --><!-- </div> </search-form-datepicker-input> </li> <li class="twidget-passengers"> <passengers form-data="$ctrl.data" passengers="$ctrl.data.passengers" trip-class="$ctrl.data.trip_class" class="ng-isolate-scope"><div> <label class="ng-binding">Passengers/Class</label> <div class="twidget-passengers-detail" ng-class="{'active':$ctrl.active}"> <div class="twidget-pas-no"><span id="twidget-pas" class="ng-binding">1</span> <span class="twidget-pas-caption ng-binding">passenger</span> </div> <div class="twidget-class ng-binding">economy class </div> </div> </div></passengers> </li> <li class="twidget-submit-button"> <button class="ng-binding">Search</button> </li> </ul> </form> </div> </div></search-form>
         		</div>
     		</section>
-		</div>
-    </main>
-    <header class="header">
+		</div>-->
         <div class="wrapper">
-            <div class="header__logo">
-                <a ui-sref="index" href="/flights/">
-                    <img src="img/header_logo.png" alt="logo">
-                    <span>Travel Pay</span>
-                </a>
-            </div>            
+            <div class="slider fullscreen">
+                <ul class="slides">
+                <li>
+                <img src="/img/background.jpg"> <!-- random image -->
+                <div class="caption center-align" style="height: 70% !important;">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s2">
+                                    <label for="origin">Origin</label>
+                                    <input id="origin" type="text" class="validate">          
+                                </div>
+                                <div class="input-field col s2">
+                                    <label for="destination">Destination</label>
+                                    <input id="destination" type="text" class="validate">          
+                                </div>
+                                <div class="input-field col s2">
+                                    <label for="departdate">Depart Date</label>
+                                    <input type="date" id="departdate" class="datepicker">          
+                                </div>
+                                <div class="input-field col s2">
+                                    <label for="returndate">Return Date</label>
+                                    <input id="returndate" type="date" class="datepicker">          
+                                </div>
+                                <div class="input-field col s2">
+                                    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Search</a>                                     
+                                </div>                                        
+                            </div>           
+                        </form>
+                    </div>
+                </div>
+                </li>
+                <li>
+                    <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
+                    <div class="caption left-align">
+                        <h3>Left Aligned Caption</h3>
+                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
+                    <div class="caption right-align">
+                        <h3>Right Aligned Caption</h3>
+                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
+                    <div class="caption center-align">
+                        <h3>This is our big Tagline!</h3>
+                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                    </div>
+                </li>
+                </ul>
+            </div>
         </div>
-    </header>
+    </main>   
     <!-- HEADER EOF   -->
-    <!-- BEGIN FOOTER -->
-    <footer class="footer">
-        <div class="wrapper">
-            <div class="footer__fname">
-                <a href="#">TravelPay 2017</a>
-            </div>
-            <div class="footer__social">
-                <ul>
-                    <li><a class="footer__social_facebook" href="#"></a></li>
-                    <li><a class="footer__social_twitter" href="#"></a></li>
-                </ul>
-            </div>
-            <div class="footer__menu">
-                <ul>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    <!-- BEGIN FOOTER -->    
     <!-- FOOTER EOF   -->
 </div>
 </template>

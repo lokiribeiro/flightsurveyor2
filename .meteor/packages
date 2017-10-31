@@ -66,3 +66,4 @@ materialize:materialize@=0.97.6
 # fourseven:scss
 # seba:minifiers-autoprefixer
 # mdg:reload-on-resume
+sergeyt:typeahead
